@@ -1,4 +1,4 @@
-from art import logo
+from guessing_game_art import logo
 import random
 
 print(logo)
