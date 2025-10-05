@@ -1,4 +1,4 @@
-from art import logo
+from black_jack_art import logo
 import random
 
 def deal_card():
