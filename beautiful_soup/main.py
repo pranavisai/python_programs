@@ -4,9 +4,7 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import time
 
-# -------------------------------
 # Spotify OAuth setup
-# -------------------------------
 CLIENT_ID = ""
 CLIENT_SECRET = ""
 REDIRECT_URI = "https://examples.com"
@@ -23,9 +21,9 @@ sp = spotipy.Spotify(
 
 user_id = sp.current_user()["id"]
 
-# -------------------------------
+
 # Scrape Billboard Hot 100
-# -------------------------------
+
 BILLBOARD_URL = "https://www.billboard.com/charts/hot-100/"
 header = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
@@ -41,9 +39,9 @@ remove_items = {'Songwriter(s)', 'Producer(s)', 'Imprint/Label'}
 songs_list = [item for item in song_titles if item not in remove_items]
 top_100_songs = songs_list[2:102]
 
-# -------------------------------
+
 # Search songs on Spotify
-# -------------------------------
+
 spotify_uris = []
 
 for song in top_100_songs:
@@ -57,9 +55,7 @@ for song in top_100_songs:
         print(f"❌ Not found: {song}")
     time.sleep(0.1)
 
-# -------------------------------
 # Create playlist and add songs
-# -------------------------------
 playlist_name = "27.10.2025 Billboard Hot 100"
 playlist = sp.user_playlist_create(user=user_id, name=playlist_name, public=False)
 print(f"\n🎵 Created playlist: {playlist['name']}")

@@ -1,4 +1,8 @@
 import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 APP_ID = "9590d853"
 API_KEY = "ab1147f7598bb003e2f9f9ad74297f0d"
