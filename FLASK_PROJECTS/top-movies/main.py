@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 Bootstrap5(app)
 
-MOVIE_API_KEY = "b8699fd834419d372aa4c8a8977800d6"
+MOVIE_API_KEY = "YOUR_KEY_HERE"
 MOVIE_URL = "https://api.themoviedb.org/3/search/movie"
 MOVIE_DB_INFO_URL="https://api.themoviedb.org/3/movie"
 MOVIE_DB_IMAGE_URL="https://image.tmdb.org/t/p/w500/"
