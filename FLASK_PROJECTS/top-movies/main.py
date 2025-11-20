@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 Bootstrap5(app)
 
-MOVIE_API_KEY = "YOUR_KEY_HERE"
+MOVIE_API_KEY = "b8699fd834419d372aa4c8a8977800d6"
 MOVIE_URL = "https://api.themoviedb.org/3/search/movie"
 MOVIE_DB_INFO_URL="https://api.themoviedb.org/3/movie"
 MOVIE_DB_IMAGE_URL="https://image.tmdb.org/t/p/w500/"
@@ -39,8 +39,11 @@ with app.app_context():
 
 @app.route("/")
 def home():
-    result = db.session.execute(db.select(Movie).order_by(Movie.ranking))
+    result = db.session.execute(db.select(Movie).order_by(Movie.rating))
     all_movies = result.scalars().all()
+    for i in range(len(all_movies)):
+        all_movies[i].ranking = len(all_movies) - i
+    db.session.commit()
     return render_template("index.html", movies= all_movies)
 
 @app.route("/add", methods=["GET", "POST"])
@@ -63,7 +66,6 @@ def edit_movie():
     if form.validate_on_submit():
         movie.rating = float(form.rating.data)
         movie.review = form.review.data
-        movie.ranking = form.ranking.data
         db.session.commit()
         return redirect(url_for("home"))
 
