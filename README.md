@@ -46,4 +46,39 @@ Some useful links I have come across while reading:
 21. .count() -> To give the count.
 22. .mean() -> To find the average.
 23. pd.options.display.float_format = '{:,.2f}'.format -> To round to 2 decimal points.
+24. c_df.column_name.value_counts() method is a quick way of finding the number of members of each category.
+25. pivoted_df = test_df.pivot(index='Age', columns='Actor', values='Power') -> Example of how to pivot the dataframe.
+26. .agg() -> count the number of unique ids in a groupby(). e.g., 
+27. .merge() -> To combine two separate DataFrames into one. The merge method works on columns with the same name in both DataFrames. e.g., merged_df = pd.merge(set_theme_count, themes, on='id')
+28. rename() -> to rename columns of DataFrames
+
+
+## Matplotlib
+1. Matplotlib works in combination with Pandas to create charts and graphs.
+2. import matplotlib.pyplot as plt -> import statement.
+3. plt.plot(dataframe_name.column_for_x-axis, dataframe_name.column_for_y-axis) -> to plot a line graph.
+4. .figure() - allows us to resize our chart 
+5. .xticks() - configures our x-axis, e.g: xticks(fontsize=14, rotation= 45) -> configures the fontsize and angle of rotation of the x-axis.
+6. .yticks() - configures our y-axis.
+7. .xlabel() - add text to the x-axis. 
+8. .ylabel() - add text to the y-axis. e.g., plt.ylabel('Nr of Sets', fontsize=14)
+9. .ylim() - allows us to set a lower and upper bound.
+10. plt.plot(pivoted_df.index, pivoted_df.java, pivoted_df.python) -> example of multiple line charts.
+11. for column in pivoted_df.columns:
+    plt.plot(pivoted_df.index, pivoted_df[column]) -> This is for drafted multiple line charts by iteration over each column.
+12. for column in pivoted_df.columns:
+    plt.plot(pivoted_df.index, pivoted_df[column], linewidth=3, label=pivoted_df[column].name) -> To add the name of the columns for understanding the line names.
+13. plt.legend(fontsize=16) -> Legend of column names with fontsize 16.
+14. Rolling mean -> Technique to make a trend apparent is to smooth out the observations by taking an average.
+15. roll_df = pivoted_df.rolling(window=<num_of_observations_averaged>).mean()
+for column in roll_df.columns:
+    plt.plot(roll_df.index, roll_df[column], 
+             linewidth=3, label=roll_df[column].name) -> To plot the roll_df
+16. plt.plot(sets_by_year.index[:-2], sets_by_year.set_num[:-2]) -> example to exclude the last row when plotting the graph.
+17. .twinx() -> method allows two different axis to share the same x-axis.
+18. plt.gca() -> to get current axis.
+19. ax1 = plt.gca() # get current axes
+ax2 = ax1.twinx() -> example usage
+20. plt.scatter(pivoted_df.index, pivoted_df.java) -> example to create a scatter plot.
+21. plt.bar(pivoted_df.index, pivoted_df.java) -> example to create a bar chart
 
